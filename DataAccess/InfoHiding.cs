@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Abstract
+namespace DataAccess
 {
-    public interface IEntity
+    internal class InfoHiding
     {
     }
 }
