@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Contants;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -21,10 +23,7 @@ namespace Business.Concrete
         }
         public IResult Add(Customer customer)
         {
-            if (customer.UserId==0)
-            {
-                return new ErrorResult(Messages.ProductNotAdded);
-            }
+            ValidationTool.Validate(new CustomerValidator(),customer);
             _CustomerDal.Add(customer);
             return new SuccessResult(Messages.ProductAdded);
         }
